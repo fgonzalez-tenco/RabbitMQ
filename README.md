@@ -35,12 +35,10 @@ Ambas aplicaciones requieren configurar el archivo `appsettings.json` con las cr
 ```json
 {
   "RabbitMQ": {
-    "Host": "localhost",          // IP o dominio del servidor RabbitMQ
-    "Username": "rabbitMQ_user",   // Usuario de RabbitMQ
-    "Password": "rabbitMQ_password",  // Contraseña
-    "Exchanges": [
-      "RabbitMQ-Test"            // Exchange a utilizar
-    ],
+    "Host": "localhost",
+    "Username": "rabbitMQ_user",
+    "Password": "rabbitMQ_password",
+    "DefaultExchange": "RabbitMQ-Test",,
     "Errors": {
       "Name": "Errors",
       "Exchange": "RabbitMQ-Errors"
@@ -62,7 +60,7 @@ Ambas aplicaciones requieren configurar el archivo `appsettings.json` con las cr
     "Username": "rabbitMQ_user",
     "Password": "rabbitMQ_password",
     "Queues": {
-      "RabbitMQ-Test": "RabbitMQ-Test-Consumer"  // Mapeo cola-consumidor
+      "RabbitMQ-Test": "RabbitMQ-Test-Consumer"
     },
     "Errors": {
       "Name": "Errors",
@@ -82,14 +80,14 @@ Ambas aplicaciones requieren configurar el archivo `appsettings.json` con las cr
 | Parámetro | Descripción | Ejemplo |
 |-----------|-------------|---------|
 | `Host` | Dirección IP o dominio del servidor RabbitMQ | `localhost` o `172.100.0.88` |
-| `Username` | Usuario para autenticación en RabbitMQ | `simone_admin` |
-| `Password` | Contraseña del usuario | `c6YmN5CljhiVL416OfE6` |
+| `Username` | Usuario para autenticación en RabbitMQ | `rabbitMQ_admin` |
+| `Password` | Contraseña del usuario | `v3ryStr0ngP@ssw0rd` |
 | `Exchanges` | Lista de exchanges para el productor | `["RabbitMQ-Test"]` |
 | `Queues` | Mapeo de colas para el consumidor | `{"RabbitMQ-Test": "RabbitMQ-Test-Consumer"}` |
 
 
 > [!TIP]
-> En caso de que se esté ejecutando RabbitMQ desde Simone.Infrastructure, se puede utilizar localhost o la IP expuesta por el contenedor.
+> En caso de que se esté ejecutando RabbitMQ desde Simone.Infrastructure, se puede utilizar localhost como valor en el parámetro Host o la IP expuesta por el contenedor.
 
 
 ## Cómo Ejecutar
