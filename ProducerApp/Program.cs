@@ -1,24 +1,21 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Simone.Common.RabbitMQ.Extensions;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using ProducerApp;
 
-namespace ProducerApp
-{
-    static class Program
-    {
-        static async Task Main(string[] args)
-        {
-            var builder = Host.CreateApplicationBuilder(args);
 
-            builder.Services.AddRabbitMQ(builder.Configuration.GetSection("RabbitMQ"));
-            builder.Services.AddSingleton<Publisher>();
+var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Services.AddRabbitMQ(builder.Configuration);
+builder.Services.TryAddTransient<Publisher>();
 
-            var app = builder.Build();
+var app = builder.Build();
+_ = app.StartAsync();
 
-            var publisher = app.Services.GetRequiredService<Publisher>();
-            await publisher.SendAsync();
+var publisher = app.Services.GetRequiredService<Publisher>();
+await publisher.SendAsync();
 
-            await app.RunAsync();
-        }
-    }
-}
+Console.WriteLine("¡Mensaje enviado!. Presiona cualquier tecla para salir...");
+Console.ReadKey();

@@ -1,18 +1,13 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Simone.Common.RabbitMQ.Extensions;
 using ConsumerApp;
-using Simone.Common.RabbitMQ.Models;
+using Microsoft.Extensions.Configuration;
 
-class Program
-{
-    static async Task Main(string[] args)
-    {
-        var builder = Host.CreateApplicationBuilder(args);
+var builder = Host.CreateApplicationBuilder(args);
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-        builder.Services.AddRabbitMQ(builder.Configuration.GetSection("RabbitMQ"))
-            .AddConsumer<Message, Consumer>(services: builder.Services);
+builder.Services.AddRabbitMQ(builder.Configuration)
+    .AddConsumer<Message, Consumer>(services: builder.Services);
 
-        var app = builder.Build();
-        await app.RunAsync();
-    }
-}
+var app = builder.Build();
+await app.RunAsync();
