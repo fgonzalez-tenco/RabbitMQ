@@ -36,9 +36,9 @@ Ambas aplicaciones requieren configurar el archivo `appsettings.json` con las cr
 {
   "RabbitMQ": {
     "Host": "localhost",
-    "Username": "rabbitMQ_user",
-    "Password": "rabbitMQ_password",
-    "DefaultExchange": "RabbitMQ-Test",,
+    "Username": "rabbitmq_user",
+    "Password": "rabbitmq_password",
+    "DefaultExchange": "RabbitMQ-Test",
     "Errors": {
       "Name": "Errors",
       "Exchange": "RabbitMQ-Errors"
@@ -57,8 +57,8 @@ Ambas aplicaciones requieren configurar el archivo `appsettings.json` con las cr
 {
   "RabbitMQ": {
     "Host": "localhost",
-    "Username": "rabbitMQ_user",
-    "Password": "rabbitMQ_password",
+    "Username": "rabbitmq_user",
+    "Password": "rabbitmq_password",
     "Queues": {
       "RabbitMQ-Test": "RabbitMQ-Test-Consumer"
     },
@@ -132,8 +132,8 @@ Mensaje enviado. Presiona cualquier tecla para salir...
 ## Dependencias
 
 ### Paquetes NuGet Utilizados
-- `Simone.Common.RabbitMQ` (v2.8.1) - Cliente RabbitMQ
-- `Microsoft.Extensions.Hosting` (v8.0.0) - Hosting para aplicaciones .NET
+- `Simone.Common.RabbitMQ` (v2.9.1) - Cliente RabbitMQ
+- `Microsoft.Extensions.Hosting` (v9.0.0) - Hosting para aplicaciones .NET
 
 ## Solución de Problemas
 

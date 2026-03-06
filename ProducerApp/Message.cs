@@ -11,7 +11,7 @@ namespace ProducerApp
         /// <summary>
         /// The Type property is a string that represents the type or category of the message. It is used to classify messages and can be helpful for routing, processing, or filtering messages based on their type. In messaging systems, the Type property can be used to determine how a message should be handled or which components should process it. For example, you might have different types of messages for user actions, system events, or notifications, and the Type property can help you distinguish between them.
         /// </summary>
-        public string Type => "MessageTest";
+        public string Type => nameof(Message);
         /// <summary>
         /// The Index property is an integer that can be used to represent the position or order of the message in a sequence. It can be helpful for tracking the order of messages, especially when processing a series of related messages. The Index can be used to ensure that messages are processed in the correct order or to identify specific messages within a batch or stream of messages. In some cases, it may also be used for pagination or to indicate the number of times a message has been retried.
         /// </summary>
